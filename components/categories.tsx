@@ -58,9 +58,9 @@ export default function CategoriesDropdown() {
                 </DropdownSection>
 
                 <DropdownSection title="Web dev">
-                    <DropdownItem key="Auth" startContent={<FaKey size={25} />}>Just auth</DropdownItem>
-                    <DropdownItem key="Realtime-Chat" startContent={<VscCommentDiscussion size={25} />}>Realtime Chat app</DropdownItem>
-                    <DropdownItem key="CRUD-app" startContent={<TbApi size={25} />}>REST full app</DropdownItem>
+                    <DropdownItem key="Just Auth" startContent={<FaKey size={25} />}>Just Auth</DropdownItem>
+                    <DropdownItem key="Realtime-Chat-app" startContent={<VscCommentDiscussion size={25} />}>Realtime Chat app</DropdownItem>
+                    <DropdownItem key="RESTful-forum-app" startContent={<TbApi size={25} />}>RESTful forum app</DropdownItem>
                 </DropdownSection>
 
 
