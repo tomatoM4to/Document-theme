@@ -22,6 +22,7 @@ import {
 	GithubIcon,
 	SearchIcon,
 } from "@/components/icons";
+import CategoriesDropdown from "./categories";
 
 export const Navbar = () => {
 	const searchInput = (
@@ -55,23 +56,22 @@ export const Navbar = () => {
 						<p className="font-bold text-inherit">tomatoM4to</p>
 					</NextLink>
 				</NavbarBrand>
-				<ul className="hidden md:flex gap-4 justify-start ml-2">
-					{siteConfig.navItems.map((item) => (
-						<NavbarItem key={item.href}>
-							<NextLink
-								className={clsx(
-									linkStyles({ color: "foreground" }),
-									"data-[active=true]:text-primary data-[active=true]:font-medium"
-								)}
-								color="foreground"
-								href={item.href}
-							>
-								{item.label}
-							</NextLink>
-						</NavbarItem>
-					))}
-				</ul>
-			</NavbarContent>
+				<ul className="hidden md:flex gap-4 justify-start ml-2 items-center">
+					<NavbarItem>
+						<NextLink className={clsx(linkStyles({ color: "foreground" }), "data-[active=true]:text-primary data-[active=true]:font-medium")} color="foreground" href="/">
+							Home
+						</NextLink>
+					</NavbarItem>
+					<NavbarItem>
+						<CategoriesDropdown />
+					</NavbarItem>
+					<NavbarItem>
+						<NextLink className={clsx(linkStyles({ color: "foreground" }), "data-[active=true]:text-primary data-[active=true]:font-medium")} color="foreground" href="/">
+							About
+						</NextLink>
+					</NavbarItem>
+				</ul >
+			</NavbarContent >
 
 			<NavbarContent
 				className="hidden md:flex basis-1/5 sm:basis-full"
@@ -106,6 +106,6 @@ export const Navbar = () => {
 					))}
 				</div>
 			</NavbarMenu>
-		</NextUINavbar>
+		</NextUINavbar >
 	);
 };
