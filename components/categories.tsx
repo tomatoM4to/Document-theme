@@ -20,8 +20,8 @@ export default function CategoriesDropdown() {
     );
 
 
-    const menu = useComputerScienceMenuStore((state) => state.menu);
-    const menuDev = useDevMenuStore((state) => state.menu);
+    const csMenu = useComputerScienceMenuStore((state) => state.menu);
+    const devMenu = useDevMenuStore((state) => state.menu);
 
 
     return (
