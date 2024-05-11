@@ -9,7 +9,8 @@ import { GiMeshNetwork } from "react-icons/gi";
 import { FaKey, FaDatabase } from "react-icons/fa";
 import { TbApi, TbVariable } from "react-icons/tb";
 import { PiGraphThin, PiComputerTowerBold } from "react-icons/pi";
-import { Menu } from "@/types";
+import { Menu, SelectedKeys } from "@/types";
+
 
 export const useComputerScienceMenuStore = create<Menu>((set) => ({
     menu: [
@@ -59,4 +60,9 @@ export const useDevMenuStore = create<Menu>((set) => ({
             icon: <TbApi size={25} />,
         }
     ],
+}));
+
+export const useSelectedKey = create<SelectedKeys>((set) => ({
+    selectedKey: "Categories",
+    setSelectedKey: (key: string) => set({ selectedKey: key }),
 }));

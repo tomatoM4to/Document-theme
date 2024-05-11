@@ -13,3 +13,8 @@ export interface MenuItem {
 export type Menu = {
   menu: MenuItem[];
 };
+
+export type SelectedKeys = {
+  selectedKey: string;
+  setSelectedKey: (keys: string) => void;
+};

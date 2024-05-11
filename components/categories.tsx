@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
     Dropdown,
     DropdownTrigger,
@@ -9,20 +9,13 @@ import {
     DropdownSection
 } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
-import { useComputerScienceMenuStore, useDevMenuStore } from "@/stores/globalStore";
+import { useComputerScienceMenuStore, useDevMenuStore, useSelectedKey } from "@/stores/menu-info";
 
 export default function CategoriesDropdown() {
-    const [selectedKeys, setSelectedKeys] = useState(new Set(["Categories"]));
-
-    const selectedValue = useMemo(
-        () => Array.from(selectedKeys).join(", "),
-        [selectedKeys]
-    );
-
-
+    const key = useSelectedKey((state) => state.selectedKey);
+    const setKey = useSelectedKey((state) => state.setSelectedKey);
     const csMenu = useComputerScienceMenuStore((state) => state.menu);
     const devMenu = useDevMenuStore((state) => state.menu);
-
 
     return (
         <Dropdown>
@@ -31,7 +24,7 @@ export default function CategoriesDropdown() {
                     variant="bordered"
                     className="capitalize"
                 >
-                    {selectedValue}
+                    {key}
                 </Button>
             </DropdownTrigger>
 
@@ -40,8 +33,10 @@ export default function CategoriesDropdown() {
                 variant="faded"
                 disallowEmptySelection
                 selectionMode="single"
-                selectedKeys={selectedKeys}
-                onSelectionChange={setSelectedKeys}
+                selectedKeys={key}
+
+                // @ts-ignore
+                onSelectionChange={setKey}
             >
 
                 <DropdownSection title="Computer Science" showDivider>
