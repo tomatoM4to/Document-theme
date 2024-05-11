@@ -46,7 +46,7 @@ export default function CategoriesDropdown() {
 
                 <DropdownSection title="Computer Science" showDivider>
                     {
-                        menu.map((item) => (
+                        csMenu.map((item) => (
                             <DropdownItem key={item.label} startContent={item.icon}>
                                 {item.label}
                             </DropdownItem>
