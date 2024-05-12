@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
@@ -9,10 +8,10 @@ import clsx from "clsx";
 
 export const metadata: Metadata = {
 	title: {
-		default: siteConfig.name,
-		template: `%s - ${siteConfig.name}`,
+		default: "documentation for NextUI",
+		template: `%s`,
 	},
-	description: siteConfig.description,
+	description: "documentation for NextUI",
 	icons: {
 		icon: "/favicon.ico",
 	},

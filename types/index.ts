@@ -4,7 +4,7 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
 
-export interface MenuItem {
+export type MenuItem = {
   label: string;
   icon: React.ReactNode;
   description?: string;

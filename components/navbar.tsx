@@ -10,19 +10,16 @@ import {
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-
 import { link as linkStyles } from "@nextui-org/theme";
-
-import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
-
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
 	GithubIcon,
 	SearchIcon,
 } from "@/components/icons";
 import CategoriesDropdown from "./categories";
+import NavbarAccordion from "./navbar-menu";
 
 export const Navbar = () => {
 	const searchInput = (
@@ -78,7 +75,7 @@ export const Navbar = () => {
 				justify="end"
 			>
 				<NavbarItem className="hidden sm:flex gap-2">
-					<Link isExternal href={siteConfig.links.github} aria-label="Github">
+					<Link isExternal href={"/"} aria-label="Github">
 						<GithubIcon className="text-default-500" />
 					</Link>
 					<ThemeSwitch />
@@ -87,7 +84,7 @@ export const Navbar = () => {
 			</NavbarContent>
 
 			<NavbarContent className="md:hidden basis-1 pl-4" justify="end">
-				<Link isExternal href={siteConfig.links.github} aria-label="Github">
+				<Link isExternal href={"/"} aria-label="Github">
 					<GithubIcon className="text-default-500" />
 				</Link>
 				<ThemeSwitch />
@@ -96,15 +93,21 @@ export const Navbar = () => {
 
 			<NavbarMenu>
 				{searchInput}
-				<div className="mx-4 mt-2 flex flex-col gap-2">
-					{siteConfig.navItems.map((item) => (
-						<NavbarMenuItem key={`${item.href}`}>
-							<Link color="foreground" size="lg" href={`${item.href}`}>
-								{item.label}
-							</Link>
-						</NavbarMenuItem>
-					))}
-				</div>
+				<NavbarItem className="px-2">
+					<NavbarMenuItem key={1}>
+						<Link color="foreground" size="lg" href="/">
+							Home
+						</Link>
+					</NavbarMenuItem>
+				</NavbarItem>
+				<NavbarMenuItem key={2}>
+					<NavbarAccordion />
+				</NavbarMenuItem>
+				<NavbarMenuItem className="px-2" key={1}>
+					<Link color="foreground" size="lg" href="/">
+						About
+					</Link>
+				</NavbarMenuItem>
 			</NavbarMenu>
 		</NextUINavbar >
 	);

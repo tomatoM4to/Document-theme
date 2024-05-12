@@ -1,0 +1,59 @@
+'use client';
+
+import React from "react";
+import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { Listbox, ListboxItem } from "@nextui-org/listbox";
+import { useComputerScienceMenuStore, useDevMenuStore, useSelectedKey } from "@/stores/menu-info";
+import { MenuItem } from "@/types";
+
+
+const AccordionCard = ({ content }: { content: MenuItem[] }) => {
+    const key = useSelectedKey((state) => state.selectedKey);
+    const setKey = useSelectedKey((state) => state.setSelectedKey);
+
+    return (
+        <div className="flex flex-col">
+            <Listbox
+                aria-label="Single selection example"
+                variant="flat"
+                disallowEmptySelection
+                selectionMode="single"
+                selectedKeys={key}
+
+                // @ts-ignore
+                onSelectionChange={setKey}
+            >
+
+                {
+                    content.map((item) => (
+                        <ListboxItem key={item.label} startContent={item.icon}>
+                            {item.label}
+                        </ListboxItem>
+                    ))
+                }
+
+
+            </Listbox >
+        </div >
+    );
+}
+
+export default function NavbarAccordion() {
+    const csMenu = useComputerScienceMenuStore((state) => state.menu);;
+    const devMenu = useDevMenuStore((state) => state.menu);;
+
+    return (
+        <Accordion isCompact>
+            <AccordionItem key="1" aria-label="Categories" title="Categories">
+                <Accordion isCompact>
+                    <AccordionItem key="1" aria-label="Computer Science" title="Accordion Computer Science">
+                        <AccordionCard content={csMenu} />
+                    </AccordionItem>
+                    <AccordionItem key="2" aria-label="Dev" title="Dev">
+                        <AccordionCard content={devMenu} />
+                    </AccordionItem>
+                </Accordion>
+            </AccordionItem>
+        </Accordion>
+    );
+}
