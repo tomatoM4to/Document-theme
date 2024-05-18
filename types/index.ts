@@ -20,3 +20,10 @@ export type SelectedKeys = {
   selectedKey: string;
   setSelectedKey: (keys: string) => void;
 };
+
+export type Params = {
+  subject: string;
+  post: string;
+  setSubject: (subject: string) => void;
+  setPost: (post: string) => void;
+};
