@@ -7,7 +7,11 @@ import { useComputerScienceMenuStore, useDevMenuStore, useSelectedKey } from "@/
 import { MenuItem } from "@/types";
 
 
-const AccordionCard = ({ content }: { content: MenuItem[] }) => {
+const AccordionCard = ({
+    content
+}: {
+    content: MenuItem[]
+}) => {
     const key = useSelectedKey((state) => state.selectedKey);
     const setKey = useSelectedKey((state) => state.setSelectedKey);
 
@@ -26,7 +30,7 @@ const AccordionCard = ({ content }: { content: MenuItem[] }) => {
 
                 {
                     content.map((item) => (
-                        <ListboxItem key={item.label} startContent={item.icon}>
+                        <ListboxItem key={item.label} startContent={item.icon} href={`/categories/${item.subject}/${item.post}`}>
                             {item.label}
                         </ListboxItem>
                     ))

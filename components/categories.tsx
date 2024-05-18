@@ -42,7 +42,7 @@ export default function CategoriesDropdown() {
                 <DropdownSection title="Computer Science" showDivider>
                     {
                         csMenu.map((item) => (
-                            <DropdownItem key={item.label} startContent={item.icon}>
+                            <DropdownItem key={item.label} startContent={item.icon} href={`/categories/${item.subject}/${item.post}`}>
                                 {item.label}
                             </DropdownItem>
                         ))
@@ -52,7 +52,7 @@ export default function CategoriesDropdown() {
                 <DropdownSection title="Web dev">
                     {
                         devMenu.map((item) => (
-                            <DropdownItem key={item.label} startContent={item.icon}>
+                            <DropdownItem key={item.label} startContent={item.icon} href={`/categories/${item.subject}/${item.post}`}>
                                 {item.label}
                             </DropdownItem>
                         ))

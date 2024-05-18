@@ -7,7 +7,9 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 export type MenuItem = {
   label: string;
   icon: React.ReactNode;
-  description?: string;
+  description: string;
+  subject: string;
+  post: string;
 }
 
 export type Menu = {
