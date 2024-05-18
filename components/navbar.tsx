@@ -20,6 +20,7 @@ import {
 } from "@/components/icons";
 import CategoriesDropdown from "./categories";
 import NavbarAccordion from "./navbar-menu";
+import { Logo } from "./Logo";
 
 export const Navbar = () => {
 	const searchInput = (
@@ -47,12 +48,7 @@ export const Navbar = () => {
 	return (
 		<NextUINavbar maxWidth="full">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-				<NavbarBrand as="li" className="gap-3 max-w-fit">
-					<NextLink className="flex justify-start items-center gap-1" href="/categories/os/os">
-						<GithubIcon />
-						<p className="font-bold text-inherit">tomatoM4to</p>
-					</NextLink>
-				</NavbarBrand>
+				<Logo />
 				<ul className="hidden md:flex gap-4 justify-start ml-2 items-center">
 					<NavbarItem>
 						<NextLink className={clsx(linkStyles({ color: "foreground" }), "data-[active=true]:text-primary data-[active=true]:font-medium")} color="foreground" href="/">
