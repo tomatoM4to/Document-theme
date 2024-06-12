@@ -9,13 +9,13 @@ import {
     DropdownSection
 } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
-import { useComputerScienceMenuStore, useDevMenuStore, useSelectedKey } from "@/stores/menu-info";
+import { useComputerScienceMenuStore, useDevMenuStore } from "@/stores/menu-info";
+import { useParamsStore } from "@/stores/params";
 
 export default function CategoriesDropdown() {
-    const key = useSelectedKey((state) => state.selectedKey);
-    const setKey = useSelectedKey((state) => state.setSelectedKey);
     const csMenu = useComputerScienceMenuStore((state) => state.menu);
     const devMenu = useDevMenuStore((state) => state.menu);
+    const post = useParamsStore((state) => state.post);
 
     return (
         <Dropdown>
@@ -24,7 +24,7 @@ export default function CategoriesDropdown() {
                     variant="bordered"
                     className="capitalize"
                 >
-                    {key}
+                    {post}
                 </Button>
             </DropdownTrigger>
 
@@ -33,16 +33,12 @@ export default function CategoriesDropdown() {
                 variant="faded"
                 disallowEmptySelection
                 selectionMode="single"
-                selectedKeys={key}
-
-                // @ts-ignore
-                onSelectionChange={setKey}
             >
 
                 <DropdownSection title="Computer Science" showDivider>
                     {
                         csMenu.map((item) => (
-                            <DropdownItem key={item.label} startContent={item.icon}>
+                            <DropdownItem key={item.post} startContent={item.icon} href={`/categories/${item.subject}/${item.post}`}>
                                 {item.label}
                             </DropdownItem>
                         ))
@@ -52,7 +48,7 @@ export default function CategoriesDropdown() {
                 <DropdownSection title="Web dev">
                     {
                         devMenu.map((item) => (
-                            <DropdownItem key={item.label} startContent={item.icon}>
+                            <DropdownItem key={item.post} startContent={item.icon} href={`/categories/${item.subject}/${item.post}`}>
                                 {item.label}
                             </DropdownItem>
                         ))

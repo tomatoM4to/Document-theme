@@ -7,10 +7,11 @@ import { useComputerScienceMenuStore, useDevMenuStore, useSelectedKey } from "@/
 import { MenuItem } from "@/types";
 
 
-const AccordionCard = ({ content }: { content: MenuItem[] }) => {
-    const key = useSelectedKey((state) => state.selectedKey);
-    const setKey = useSelectedKey((state) => state.setSelectedKey);
-
+const AccordionCard = ({
+    content
+}: {
+    content: MenuItem[]
+}) => {
     return (
         <div className="flex flex-col">
             <Listbox
@@ -18,15 +19,10 @@ const AccordionCard = ({ content }: { content: MenuItem[] }) => {
                 variant="flat"
                 disallowEmptySelection
                 selectionMode="single"
-                selectedKeys={key}
-
-                // @ts-ignore
-                onSelectionChange={setKey}
             >
-
                 {
                     content.map((item) => (
-                        <ListboxItem key={item.label} startContent={item.icon}>
+                        <ListboxItem key={item.post} startContent={item.icon} href={`/categories/${item.subject}/${item.post}`}>
                             {item.label}
                         </ListboxItem>
                     ))
